@@ -1,0 +1,39 @@
+<mat-sidenav-container autosize>
+
+  <mat-sidenav #drawer 
+      fixedInViewport
+      [opened]="({isExpanded}) ? 'true' : 'false'"
+      mode='side'
+      role = 'navigation'>
+    
+    <mat-nav-list>
+
+      <mat-list-item (click)="isExpanded = !isExpanded">
+        <mat-icon mat-list-icon class="chevron-button" [class]="{ rotated: isExpanded }">chevron_right</mat-icon>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'dashboard'">
+        <mat-icon mat-list-icon>home</mat-icon>
+        @if (isExpanded) {
+          <span class="menu-item">Dashboard</span>
+        }
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'info'">
+        <mat-icon mat-list-icon>info</mat-icon>
+        @if (isExpanded) {
+          <span class="menu-item">Info</span>
+        }
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <h4>Tut-Ang-Amun</h4>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
