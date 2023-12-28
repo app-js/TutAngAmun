@@ -26,6 +26,13 @@
         }
       </mat-list-item>
 
+      <mat-list-item [routerLink]="'trees'">
+        <mat-icon mat-list-icon>account_tree</mat-icon>
+        @if (isExpanded) {
+          <span class="menu-item">Trees</span>
+        }
+      </mat-list-item>   
+        
     </mat-nav-list>
   </mat-sidenav>
 

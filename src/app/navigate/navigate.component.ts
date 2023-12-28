@@ -5,8 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterOutlet, RouterLink  } from '@angular/router';
-// import { RouterTestingModule } from "@angular/router/testing";
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navigate',
@@ -22,7 +21,6 @@ import { RouterOutlet, RouterLink  } from '@angular/router';
     AsyncPipe,
     RouterOutlet,
     RouterLink,
-    // RouterTestingModule,
   ]
 })
 export class NavigateComponent {
