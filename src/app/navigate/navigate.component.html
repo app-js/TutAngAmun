@@ -26,14 +26,26 @@
         }
       </mat-list-item>
 
+      <mat-list-item [matMenuTriggerFor]="menuForm">
+        <mat-icon mat-list-icon>newspaper</mat-icon>
+        @if (isExpanded) {
+          <span class="menu-item">Forms</span>
+        }
+      </mat-list-item>   
+      <mat-menu #menuForm="matMenu" yPosition="below" xPosition="after">
+        <button mat-menu-item [routerLink]="'formT'">Templatedriven</button>
+        <button mat-menu-item [routerLink]="'formR'">Reactive </button>
+      </mat-menu>
+
       <mat-list-item [routerLink]="'trees'">
         <mat-icon mat-list-icon>account_tree</mat-icon>
         @if (isExpanded) {
           <span class="menu-item">Trees</span>
         }
       </mat-list-item>   
-        
+
     </mat-nav-list>
+
   </mat-sidenav>
 
   <mat-sidenav-content>

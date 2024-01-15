@@ -1,0 +1,50 @@
+<mat-card>
+    <div class="tam-mat-card-header">
+        <mat-card-header>
+            <mat-card-title>
+                Form-Template-Sample
+            </mat-card-title>
+            <mat-card-subtitle>
+                Tagesgeldberechnung
+            </mat-card-subtitle>
+        </mat-card-header>
+    </div>
+    <mat-card-content>
+        <form #tgForm="ngForm">
+            <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Superhero Name</mat-label>
+                  <input #spy="ngModel"
+                         type="text" 
+                         name="name" 
+                         [(ngModel)]="tg.zinssatz" 
+                         matInput 
+                         required
+                         placeholder="A name to be remembered" />
+                  <mat-hint>Enter name</mat-hint>
+                </mat-form-field>
+                <!-- <div>
+                  {{spy.valid}}
+                </div> -->
+            </div> 
+            <div>
+            <mat-form-field appearance="outline">
+            <mat-label>Anlagekapital</mat-label>
+            <input type="text" 
+                   name="anlagekapital" 
+                   matInput
+                   [(ngModel)]="tg.anlagekapital"
+                   required 
+                   placeholder="0,00" />
+            </mat-form-field>
+            </div>     
+        </form>
+    </mat-card-content>
+    <mat-card-actions class="pull-right">
+        <button mat-stroked-button> Abbrechen </button>
+        <button mat-stroked-button [disabled]="!tgForm.valid"> Berechnen </button>
+    </mat-card-actions>
+    <mat-card-footer align="end">
+        * Berechnung erfogt als Dummy
+    </mat-card-footer>    
+</mat-card>

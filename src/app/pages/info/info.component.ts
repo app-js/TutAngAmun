@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './info.component.scss'
 })
 export class InfoComponent {
+ 
+  m1: string = "";
 
+  constructor() {
+    this.m1 ='templateUrl';
+  }
 }

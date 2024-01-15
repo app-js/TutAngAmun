@@ -1,0 +1,96 @@
+
+$very-peri-palette: (
+    50 : #ededf5,
+    100 : #d1d1e6,
+    200 : #b3b3d5,
+    300 : #9495c4,
+    400 : #7d7eb8,
+    500 : #6667ab,
+    600 : #5e5fa4,
+    700 : #53549a,
+    800 : #494a91,
+    900 : #383980,
+    A100 : #cfd0ff,
+    A200 : #9c9eff,
+    A400 : #696bff,
+    A700 : #5052ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+  );
+
+  @font-face {
+    font-family: "Knewave";
+    src: local("Knewave"), url(./assets/fonts/Knewave/Knewave-Regular.ttf) format("truetype");
+  }
+  @font-face {
+    font-family: "Lato";
+    src: local("Lato"), url(./assets/fonts/Lato/Lato-Regular.ttf) format("truetype");
+  }
+  @font-face {
+    font-family: "Goldman";
+    src: local("Goldman"), url(./assets/fonts/Goldman/Goldman-Regular.ttf) format("truetype");
+  }
+  
+  $Knewave-typography: mat.define-typography-config(
+    $font-family: "Knewave",
+    $headline-1: mat.define-typography-level($font-size: 112px),
+    $headline-2: mat.define-typography-level($font-size: 56px),
+    $headline-3: mat.define-typography-level($font-size: 45px, $line-height: 48px),
+    $headline-4: mat.define-typography-level($font-size: 34px, $line-height: 40px),
+    $headline-5: mat.define-typography-level($font-size: 24px, $line-height: 32px),
+    $headline-6: mat.define-typography-level($font-size: 20px, $line-height: 32px),
+    $subtitle-1: mat.define-typography-level($font-size: 18px, $line-height: 28px),
+    $subtitle-2: mat.define-typography-level($font-size: 18px, $line-height: 24px),
+    $body-2: mat.define-typography-level($font-size: 16px),
+    $body-1: mat.define-typography-level($font-size: 16px),
+    $caption: mat.define-typography-level($font-size: 16px),
+    $button: mat.define-typography-level($font-size: 16px),
+  );
+
+  $Goldman-typography: mat.define-typography-config(
+    // Specify "Goldman" as the default font family for all levels.
+    $font-family: 'Goldman',
+    $headline-1: mat.define-typography-level($font-size: 112px),
+    $headline-2: mat.define-typography-level($font-size: 56px),
+    $headline-3: mat.define-typography-level($font-size: 45px, $line-height: 48px),
+    $headline-4: mat.define-typography-level($font-size: 34px, $line-height: 40px),
+    $headline-5: mat.define-typography-level($font-size: 24px, $line-height: 32px),
+    $headline-6: mat.define-typography-level($font-size: 20px, $line-height: 32px),
+    $subtitle-1: mat.define-typography-level($font-size: 18px, $line-height: 28px),
+    $subtitle-2: mat.define-typography-level($font-size: 18px, $line-height: 24px),
+    $body-2: mat.define-typography-level($font-size: 16px),
+    $body-1: mat.define-typography-level($font-size: 16px),
+    $caption: mat.define-typography-level($font-size: 16px),
+    $button: mat.define-typography-level($font-size: 16px),
+  );
+
+  $Lato-typography: mat.define-typography-config(
+    $font-family: "Lato",
+    $headline-1: mat.define-typography-level($font-size: 112px),
+    $headline-2: mat.define-typography-level($font-size: 56px),
+    $headline-3: mat.define-typography-level($font-size: 45px, $line-height: 48px),
+    $headline-4: mat.define-typography-level($font-size: 34px, $line-height: 40px),
+    $headline-5: mat.define-typography-level($font-size: 24px, $line-height: 32px),
+    $headline-6: mat.define-typography-level($font-size: 20px, $line-height: 32px),
+    $subtitle-1: mat.define-typography-level($font-size: 18px, $line-height: 28px),
+    $subtitle-2: mat.define-typography-level($font-size: 18px, $line-height: 24px),
+    $body-2: mat.define-typography-level($font-size: 16px),
+    $body-1: mat.define-typography-level($font-size: 16px),
+    $caption: mat.define-typography-level($font-size: 16px),
+    $button: mat.define-typography-level($font-size: 16px),
+  );
+      

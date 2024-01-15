@@ -4,6 +4,7 @@ import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/m
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { RouterOutlet, RouterLink  } from '@angular/router';
+import { LoggerService } from '../../logger.service';
 
 /**
  * Food data with nested structure.
@@ -18,21 +19,33 @@ const TREE_DATA: FoodNode[] = [
   {
     name: 'TopLevel1',
     children: [
-      {name: 'Level1'}, 
-      {name: 'Level1'}, 
-      {name: 'Level1'}
+      {name: 'Level1a'}, 
+      {name: 'Level1b'}, 
+      {
+        name: 'Level1c',
+        children: [
+          {name: 'Level2a'}, 
+          {
+            name: 'Level2b',
+            children: [
+              {name: 'Level3a'}, 
+              {name: 'Level3b'}
+            ],
+          }
+        ],
+      }
     ],
   },
   {
     name: 'TopLevel2',
     children: [
       {
-        name: 'Level1',
-        children: [{name: 'Level2'}, {name: 'Level2'}],
+        name: 'Level1a',
+        children: [{name: 'Level2a'}, {name: 'Level2b'}],
       },
       {
-        name: 'Level1',
-        children: [{name: 'Level2'}, {name: 'Level2'}],
+        name: 'Level1b',
+        children: [{name: 'Level2a'}, {name: 'Level2b'}],
       },
     ],
   },
@@ -58,6 +71,7 @@ interface ExampleFlatNode {
 export class TreeComponent {
   
   private _transformer = (node: FoodNode, level: number) => {
+    this.logger.log('tree _transformer node=' + node.name + ' level=' + level + ' exp: ' + (!!node.children && node.children.length > 0));
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
@@ -79,9 +93,14 @@ export class TreeComponent {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor() {
+  constructor(private logger: LoggerService) {
     this.dataSource.data = TREE_DATA;
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+
+  ngOnInit() {
+    this.logger.log('tree OnInit');
+  }
+
 }
