@@ -9,25 +9,25 @@
     <mat-nav-list>
 
       <mat-list-item (click)="isExpanded = !isExpanded">
-        <mat-icon mat-list-icon class="chevron-button" [class]="{ rotated: isExpanded }">chevron_right</mat-icon>
+        <mat-icon fontSet="material-symbols-outlined" class="chevron-button" [class]="{ rotated: isExpanded }">chevron_right</mat-icon>
       </mat-list-item>
 
       <mat-list-item [routerLink]="'dashboard'">
-        <mat-icon mat-list-icon>home</mat-icon>
+        <mat-icon fontSet="material-symbols-outlined">home</mat-icon>
         @if (isExpanded) {
           <span class="menu-item">Dashboard</span>
         }
       </mat-list-item>
 
       <mat-list-item [routerLink]="'info'">
-        <mat-icon mat-list-icon>info</mat-icon>
+        <mat-icon fontSet="material-symbols-outlined">info</mat-icon>
         @if (isExpanded) {
           <span class="menu-item">Info</span>
         }
       </mat-list-item>
 
       <mat-list-item [matMenuTriggerFor]="menuForm">
-        <mat-icon mat-list-icon>newspaper</mat-icon>
+        <mat-icon fontSet="material-symbols-outlined">newspaper</mat-icon>
         @if (isExpanded) {
           <span class="menu-item">Forms</span>
         }
@@ -38,7 +38,7 @@
       </mat-menu>
 
       <mat-list-item [routerLink]="'trees'">
-        <mat-icon mat-list-icon>account_tree</mat-icon>
+        <mat-icon fontSet="material-symbols-outlined">account_tree</mat-icon>
         @if (isExpanded) {
           <span class="menu-item">Trees</span>
         }
@@ -50,7 +50,14 @@
 
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <h4>Tut-Ang-Amun</h4>
+      <span class="tool-icon">{{title}}</span>
+ 
+      <span class="tool-spacer"></span>
+    
+      <mat-slide-toggle [checked]="checked" (change)="changed($event)">
+        <mat-icon fontSet="material-symbols-outlined">{{thememode}}</mat-icon>
+      </mat-slide-toggle>
+
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

@@ -5,6 +5,7 @@ import { NavigateComponent } from './navigate/navigate.component';
 import { TreeComponent } from './pages/tree/tree.component';
 import { FormTemplateTutComponent } from './pages/forms/form-template-tut/form-template-tut.component';
 import { FormReactiveTutComponent } from './pages/forms/form-reactive-tut/form-reactive-tut.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 export const routes: Routes = [
     {
@@ -25,9 +26,13 @@ export const routes: Routes = [
             {
                 path: 'formR', component: FormReactiveTutComponent
             },
+            {
+                path: '**',
+                component: NotfoundComponent
+            }
         ]
     },
     {
-        path: '**', redirectTo: '/dashboard', pathMatch: 'full'
+        path: '**', component: NotfoundComponent
     }
 ];
