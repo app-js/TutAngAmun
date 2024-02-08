@@ -1,5 +1,5 @@
 # TutAngAmun
-## Tutorial-Angular Ver. 0.1.0
+## Tutorial-Angular Ver. 0.1.1
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 

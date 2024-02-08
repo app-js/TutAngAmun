@@ -4,7 +4,7 @@ import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/m
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { RouterOutlet, RouterLink  } from '@angular/router';
-import { LoggerService } from '../../logger.service';
+import { LoggerService } from '../../services/logger.service';
 
 /**
  * Food data with nested structure.

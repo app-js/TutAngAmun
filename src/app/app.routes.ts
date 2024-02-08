@@ -27,12 +27,11 @@ export const routes: Routes = [
                 path: 'formR', component: FormReactiveTutComponent
             },
             {
-                path: '**',
-                component: NotfoundComponent
+                path: '**', redirectTo: '/dashboard', pathMatch: 'full'
             }
         ]
     },
     {
-        path: '**', component: NotfoundComponent
+         path: '**', component: NotfoundComponent
     }
 ];

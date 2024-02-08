@@ -12,31 +12,18 @@
     <mat-card-content>
         <form #tgForm="ngForm">
             <div>
-                <mat-form-field appearance="outline">
-                  <mat-label>Superhero Name</mat-label>
-                  <input #spy="ngModel"
-                         type="text" 
-                         name="name" 
-                         [(ngModel)]="tg.zinssatz" 
-                         matInput 
-                         required
-                         placeholder="A name to be remembered" />
-                  <mat-hint>Enter name</mat-hint>
-                </mat-form-field>
-                <!-- <div>
-                  {{spy.valid}}
-                </div> -->
             </div> 
             <div>
-            <mat-form-field appearance="outline">
-            <mat-label>Anlagekapital</mat-label>
-            <input type="text" 
-                   name="anlagekapital" 
-                   matInput
-                   [(ngModel)]="tg.anlagekapital"
-                   required 
-                   placeholder="0,00" />
-            </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Anlagekapital</mat-label>
+                    <input type="text" 
+                        name="anlagekapital" 
+                        matInput
+                        [ngModel]="{value:myNum} | localNumber"
+                        (ngModelChange)="myNum=$event"
+                        required 
+                        placeholder="0,00" />
+                </mat-form-field>
             </div>     
         </form>
     </mat-card-content>

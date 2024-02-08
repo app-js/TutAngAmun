@@ -1,2 +1,8 @@
-<p>info works!</p>
-<p>{{m1}}</p>
+
+<p>ngDate: {{today | date:'shortDate'}}</p>
+<p>localDate: {{today | localDate}}</p>
+<p>ngNumber: {{val | number:'.2-2'}}</p>
+<p>localNumber: {{{value:val} | localNumber}}</p>
+<p>localNumber: {{{value:val1} | localNumber}}</p>
+<button (click)="german()">Deutsch</button>
+<button (click)="english()">English</button>
