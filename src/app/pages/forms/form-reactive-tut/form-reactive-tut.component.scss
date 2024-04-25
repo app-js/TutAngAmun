@@ -31,8 +31,38 @@ mat-card-footer{
 
 .tam-mat-card-header{
     padding-bottom: 30px;
+    max-width: 100%;
 }
 
 mat-divider {
     margin-top: 10px;
 }
+
+.table-pad {    
+    padding: 5px 35px 35px 30px;
+    // margin: 10px 35px 35px 30px;
+    width: 90%;
+}
+
+.basic-container {
+    padding: 50px;
+    max-width: 100%;
+}
+
+// .mat-footer-row,
+// .mat-header-row,
+// .mat-row {
+//     display: inline-flex;
+//     min-width: 100%;
+// }
+
+.mat-header-cell {
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .mat-cell ,.mat-header-row {
+    min-width: 200rem;
+  }
+  
+  .mat-table { width: 100%; overflow: auto}

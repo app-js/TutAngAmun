@@ -1,14 +1,14 @@
-export enum Zinzperiode {
+export enum Zinzperioden {
     ohneZinseszins = 0,
-    monatlich,
-    vierteljaehrlich,
-    halbjaehrlich,
-    jaehrlich,
-    taeglich
+    monatlich = 12,
+    vierteljährlich = 4,
+    halbjährlich = 2,
+    jährlich = 1,
+    täglich = 360
 }
 
-export enum Zinsmethode {
-    DeutscheZinsmethode = 0,    // 30/360
+export enum Zinsmethoden {
+    DeutscheZinsmethode = 0,    // 30E/360
     Eurozinsmethode,            // act/360
     EnglischeZinsmethode,       // act/365
     TaggenaueZinsmethode        // act/act
@@ -30,18 +30,49 @@ export interface IDatumsbereich {
 export interface ISteuern {
     aktiv : boolean,
     steuersatz : number,
-    steuerfreibetrag : number
+    steuerfreibetrag : number,
+    steuern : number
 }
 
 export interface ITagesgeld {
     anlagekapital : number,
     zinsstaffel? : Array<IZinsstaffel>,
     zinssatz : number,
-    zinzperiode : Zinzperiode,
+    zinzperiode : Zinzperioden,
     datumsbereich : IDatumsbereich,
     zinstage : number,
     zinsertrag : number,
-    zinsmethode : Zinsmethode,
+    zinsmethode : Zinsmethoden,
     steuern : ISteuern
 }
-  
+
+export interface IKapitalElement {
+    periode : number,
+    anlage : number,
+    ertrag : number
+    anlageneu : number,
+}
+
+export interface ISteuerElement {
+    periode : number,
+    frei : number,
+    steuer : number,
+    steuerverlust : number
+}
+
+export interface ISteuerListe {
+    perioden : number,
+    tage : number,
+    kapital : IKapitalElement[],
+    frei : ISteuerElement[]
+}
+
+export interface ISteuerDisplay {
+    periode : string,
+    anlage : string,
+    ertrag : string,
+    anlageneu : string,
+    freibetrag : string,
+    steuer : string,
+    steuerverlust : string   
+}

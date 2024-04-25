@@ -1,49 +1,145 @@
-
-<mat-card>
+<mat-card class="mat-elevation-z8">
     <div class="tam-mat-card-header">
         <mat-card-header>
-            <mat-card-title>
-                Form-Reactive-Sample
-            </mat-card-title>
-            <mat-card-subtitle>
-                Tagesgeldberechnung
-            </mat-card-subtitle>
+            <mat-card-title>Tagesgeldberechnung</mat-card-title>
+            <mat-card-subtitle>Form-Reactive-Sample</mat-card-subtitle>
         </mat-card-header>
         <mat-divider></mat-divider>
     </div>
     <mat-card-content>
-        <form [formGroup]="tagesgeldForm">
+        <form [formGroup]="tagesgeldForm" (ngSubmit)="onSubmit()">
             <div>
                 <mat-form-field appearance="outline">
                     <mat-label>Anlagekapital </mat-label>
                     <input id="anlagekapital"
-                            type="text"
-                            formControlName="anlagekapital"
-                            [maskito]="currencyMaskOption"
-                            matInput
-                            placeholder="0,00"/>
+                        type="text"
+                        formControlName="anlagekapital"
+                        [maskito]="currencyMaskOption"
+                        matInput
+                        placeholder="0,00" />
                 </mat-form-field>
-            </div> 
+            </div>
             <div>
                 <mat-form-field appearance="outline">
                     <mat-label>Zinssatz </mat-label>
                     <input id="zinssatz"
-                            type="text"
-                            formControlName="zinssatz"
-                            [maskito]="percentMaskOption"
-                            matInput
-                            placeholder="0,00"/>
+                        type="text"
+                        formControlName="zinssatz"
+                        [maskito]="percentMaskOption4"
+                        matInput
+                        placeholder="0,0000" />
                 </mat-form-field>
-            </div>     
-        </form>    
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Zinsperiode</mat-label>
+                    <mat-select formControlName="zinsperiode">
+                        @for (zp of zinzperiodenKeys; track zp) {
+                            <mat-option [value]=zp>{{zinzperioden[zp]}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Zinstage </mat-label>
+                    <input id="zinstage"
+                        type="text"
+                        formControlName="zinstage"
+                        [maskito]="decimalMaskOption"
+                        matInput
+                        placeholder="0" />
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-checkbox id="steuern" formControlName="steuern">Abgeltungssteuer</mat-checkbox>
+                @if (this.tg.steuern.aktiv) {
+                    <div>
+                        <mat-form-field appearance="outline">
+                        <mat-label>Steuersatz </mat-label>
+                        <input id="steuersatz"
+                            type="text"
+                            formControlName="steuersatz"
+                            [maskito]="percentMaskOption4"
+                            matInput
+                            placeholder="0,0000" />
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline">
+                        <mat-label>Freibetrag </mat-label>
+                        <input id="freibetrag"
+                            type="text"
+                            formControlName="freibetrag"
+                            [maskito]="currencyMaskOption"
+                            matInput
+                            placeholder="0,00" />
+                        </mat-form-field>
+                    </div>
+                }
+            </div>
+            <mat-divider></mat-divider>
+            <div>
+                <h2>Ertrag: {{ertrag}}</h2>
+                <h2>Steuern: {{steuern}}</h2>
+            </div>
+            <mat-divider></mat-divider>
+            <mat-card-actions class="pull-right">
+                <button mat-raised-button color="primary" type="button">
+                    Abbrechen </button>
+                <button mat-raised-button color="primary"
+                    [disabled]="!tagesgeldForm.valid" type="submit"> Berechnen
+                </button>
+            </mat-card-actions>
+        </form>
     </mat-card-content>
-    <mat-divider></mat-divider>
-    <mat-card-actions class="pull-right">
-        <button mat-raised-button color="primary"> Abbrechen </button>
-        <button mat-raised-button color="primary" [disabled]="!tagesgeldForm.valid"> Berechnen </button>
-    </mat-card-actions>
     <mat-card-footer align="end">
-        * Berechnung erfogt als Dummy
-    </mat-card-footer>    
+        * 30E/360 Deutsche Zinsmethode
+    </mat-card-footer>
 </mat-card>
-<pre>Output tg: {{tg | json}}</pre>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <ng-container matColumnDef="periode">
+      <th mat-header-cell *matHeaderCellDef> Zinsperiode </th>
+      <td mat-cell *matCellDef="let data"> {{data.periode}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="anlage">
+      <th mat-header-cell *matHeaderCellDef> Kapitalanlage </th>
+      <td mat-cell *matCellDef="let data"> {{data.anlage}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="ertrag">
+      <th mat-header-cell *matHeaderCellDef> Ertrag </th>
+      <td mat-cell *matCellDef="let data"> {{data.ertrag}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="anlageneu">
+        <th mat-header-cell *matHeaderCellDef> Gesamt </th>
+        <td mat-cell *matCellDef="let data"> {{data.anlageneu}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="freibetrag">
+        <th mat-header-cell *matHeaderCellDef> Freibetrag </th>
+        <td mat-cell *matCellDef="let data"> {{data.freibetrag}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="steuer">
+        <th mat-header-cell *matHeaderCellDef> Steuern </th>
+        <td mat-cell *matCellDef="let data"> {{data.steuer}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="steuerverlust">
+        <th mat-header-cell *matHeaderCellDef> Steuerverlust </th>
+        <td mat-cell *matCellDef="let data"> {{data.steuerverlust}} </td>
+    </ng-container>
+</table>
+
+
+<!-- <pre>Output tg: {{tg | json}}</pre>
+<pre>Output Ertrag: {{ertrag}}</pre>
+<pre>Output zinzperioden: {{zinzperioden | json}}</pre> -->

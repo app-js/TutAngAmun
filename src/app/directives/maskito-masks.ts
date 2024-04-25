@@ -15,7 +15,7 @@ export function maskCurrencyOptionsLocal(session: SessionService, decPlaces: num
          });  
 }
 
-export function maskPercentOptionsLocal(session: SessionService, decPlaces: number = 2) {
+export function maskPercentOptionsLocal(session: SessionService, decPlaces: number = 4) {
   return maskitoNumberOptionsGenerator({
             decimalZeroPadding: true,
             precision: decPlaces,
@@ -23,5 +23,15 @@ export function maskPercentOptionsLocal(session: SessionService, decPlaces: numb
             min: 0,
             max: 100,
             postfix: ' ' + getLocaleNumberSymbol(session.locale, NumberSymbol.PercentSign)
+         });  
+}
+
+export function maskDecimalOptionsLocal(session: SessionService, decPlaces: number = 0, postString: string = '') {
+  return maskitoNumberOptionsGenerator({
+            decimalZeroPadding: true,
+            precision: decPlaces,
+            decimalSeparator: getLocaleNumberSymbol(session.locale, NumberSymbol.Decimal),
+            min: 0,
+            postfix: ' ' + postString
          });  
 }
